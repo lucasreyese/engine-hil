@@ -3,8 +3,12 @@ This project uses a USB-to-CAN module to simulate and transmit typical engine se
 
 > IN EARLY DEVELOPMENT - there are no guarantees anything works yet.
 
-## Architecture 
-TODO: Add diagram
+## Architecture
+```mermaid
+graph LR
+    A[Python Simulator] <-->|USB| B[USB-to-CAN]
+    B <-->|CAN Bus| C[STM32 ECM]
+```
 
 ## Documentation
 - [Simulator](simulator/README.md)
