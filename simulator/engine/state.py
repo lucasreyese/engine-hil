@@ -1,5 +1,4 @@
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 
 @dataclass
@@ -36,7 +35,7 @@ class EngineState:
 class ControlInputs:
     """
     Control outputs from the STM32 ECM received over CAN.
-    Defaults represent safe open-loop fallback values.
+    Defaults are safe fallback values.
     """
     ignition_advance_deg: float = 10.0 # degrees BTDC
     injector_pw_ms: float = 2.5 # ms, injector pulse width
