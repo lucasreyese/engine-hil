@@ -1,18 +1,17 @@
 # Hardware-in-the-Loop Engine Simulator
-This project uses Python and a USB-to-CAN module to simulate engine sensor data 
-and transmit it to an STM32-based Engine Control Module (ECM) written in C. The 
-ECM responds with control outputs to maintain engine stability given a variable 
-throttle input. This mirrors modern distributed vehicle architectures, where a 
-Zone Controller digitises analog sensor signals before forwarding them to the ECM 
-over CAN bus.
+This project uses Python and a USB-to-CAN module to simulate engine sensor data and transmit it to an STM32-based Engine Control Module (ECM) written in C. 
+The ECM responds with control outputs to maintain engine stability given a variable throttle input. 
+This mirrors Zonal Automotive Architectures, 
+where a Zone Controller digitises analog sensor signals before forwarding them to the ECM over CAN bus.
 
 > IN EARLY DEVELOPMENT - there are no guarantees anything works yet.
 
 ## Real-World Architecture
 ```mermaid
 graph LR
-    A[Engine Sensors] <-->|Analog/Digital Signals| B[Zone Controller]
-    B <-->|CAN Bus| C[ECM]
+    A[Engine Sensors] -->|Analog/Digital Signals| B[Zone Controller]
+    B -->|Digital Signals| C[Actuators]
+    B <-->|CAN Bus| D[ECM]
 ```
 
 ## Simulator Architecture
@@ -23,10 +22,10 @@ graph LR
 ```
 
 ## Hardware
-- STM32 development board
-- CAN controller and transceiver unit
+- STM32 development board (NUCLEO-F401RE)
+- CAN controller and transceiver unit (MCP2515 and TJA1050 respectively)
 - USB-to-CAN adapter (Canable based)
-- Potentiometer (Throttle)
+- Potentiometer (1kΩ, used for the throttle)
 
 ## Documentation
 - [Simulator](simulator/README.md)
